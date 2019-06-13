@@ -35,6 +35,12 @@ class Student extends Person {
     listsSubjects() {
         return (`${this.name}'s favorite subjects are ${this.favSubjects}`)
         }
+
+    listFavorites() {
+        console.log(`${this.name}'s favorite subjects are `)
+        for (i=0; i<this.favSubjects.length; i++)
+            return(this.favSubjects[i])
+    }
     PRAssignment(subject) {
         return (`${this.name} has submitted a PR for ${subject}.`)
         }
@@ -135,3 +141,4 @@ const dan = new Instructor({
   console.log(jordin.sprintChallenge('Ruby'))
   console.log(jared.listsSubjects())
   console.log(stacy.PRAssignment('Java'))
+  console.log(jordin.listFavorites())

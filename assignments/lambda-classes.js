@@ -31,20 +31,16 @@ class Student extends Person {
         this.previousBackground = attrs.previousBackground
         this.className = attrs.className
         this.favSubjects = attrs.favSubjects
-        this.listsSubjects = attrs.listsSubjects
     }
     listsSubjects() {
-        console.log(`${this.name}'s favorite subjects are: `)
-        for (i=0; i<this.favSubjects.length; i++) {
-            return this.favSubjects[i]
+        return (`${this.name}'s favorite subjects are ${this.favSubjects}`)
         }
-    }
     PRAssignment(subject) {
         return (`${this.name} has submitted a PR for ${subject}.`)
-    }
+        }
     sprintChallenge(subject) {
         return (`${this.name} has begun sprint challenge on ${subject}.`)
-    }
+        }
 }
 
 class ProjectManager extends Instructor {
@@ -63,7 +59,7 @@ class ProjectManager extends Instructor {
 
 const dan = new Instructor({
     name: 'Dan',
-    location: 'Levy',
+    location: 'Chicago',
     age: 32,
     favLanguage: 'JavaScript',
     specialty: 'Node.js',
@@ -72,7 +68,7 @@ const dan = new Instructor({
 
   const harold = new Instructor({
     name: 'Harold',
-    location: 'Tenniman',
+    location: 'San Francisco',
     age: 45,
     favLanguage: 'F# (yes, seriously)',
     specialty: 'User Experience',
@@ -81,7 +77,7 @@ const dan = new Instructor({
 
   const frank = new ProjectManager({
     name: 'Frank',
-    location: 'Delvato',
+    location: 'Milwuakee',
     age: 26,
     favLanguage: 'C++',
     specialty: 'Back-End',
@@ -92,7 +88,7 @@ const dan = new Instructor({
 
   const alisha = new ProjectManager({
     name: 'Alisha',
-    location: 'Wordell',
+    location: 'Tampa',
     age: 23,
     favLanguage: 'Python',
     specialty: 'Redux',
@@ -103,27 +99,39 @@ const dan = new Instructor({
 
   const jordin = new Student({
     name: 'Jordin',
-    location: 'Kolman',
+    location: 'Austin',
     age: 24,
     previousBackground: 'Armed Security and Military',
     className: 'WEB21',
-    favSubjects: ['LESS', 'JavaScript', 'C#']
+    favSubjects: ['LESS', ' JavaScript', ' C#']
   });
 
   const stacy = new Student({
     name: 'Stacy',
-    location: 'Ely',
+    location: 'Salt Lake City',
     age: 52,
     previousBackground: 'Data Entry',
     className: 'UX5',
-    favSubjects: ['HTML', 'Python', 'Ruby on Rails']
+    favSubjects: ['HTML', ' Python', ' Ruby on Rails ']
   });
 
   const jared = new Student({
     name: 'Jared',
-    location: 'Kowolski',
+    location: 'Brooklyn',
     age: 29,
     previousBackground: 'Sales',
     className: 'JBD15',
-    favSubjects: ['Java', 'JavaScript', 'CoffeeScript']
+    favSubjects: ['Java', ' JavaScript', ' CoffeeScript ']
   });
+
+  console.log(dan.name, dan.age)
+  console.log(harold.location)
+  console.log(dan.catchPhrase)
+  console.log(frank.specialty)
+  console.log(harold.demo('HTML'))
+  console.log(dan.grade(stacy, 'JavaScript'))
+  console.log(frank.standUp('web21_frank'))
+  console.log(alisha.debugsCode(jordin, 'Python'))
+  console.log(jordin.sprintChallenge('Ruby'))
+  console.log(jared.listsSubjects())
+  console.log(stacy.PRAssignment('Java'))

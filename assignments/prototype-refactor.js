@@ -6,59 +6,60 @@ Prototype Refactor
 
 2. Your goal is to refactor all of this code to use ES6 Classes. The console.log() statements should still return what is expected of them.
 
-*/
+  */
 
-function GameObject(attributes) {
-    this.name = attributes.name;
-    this.createdAt = attributes.createdAt
-    this.dimensions = attributes.dimensions
+  class GameObject{
+    constructor(attributes) {
+      this.name = attributes.name
+      this.createdAt = attributes.createdAt
+      this.dimensions = attributes.dimensions
   }
-  GameObject.prototype.destroy = function() {
-    return (`${this.name} was removed from the game.`)
-  };
-  
-  function CharacterStats(attributes) {
-    GameObject.call(this, attributes);
-    this.healthPoints = attributes.healthPoints
+  destroy() {
+      return (`${this.name} was removed from the game.`)
   }
-  
-  CharacterStats.prototype = Object.create(GameObject.prototype);
-  CharacterStats.prototype.takeDamage = function() {
-    return (`${this.name} took damage.`)
-  };
-  
-  function Humanoid(attributes) {
-    CharacterStats.call(this, attributes);
-    this.team = attributes.team
-    this.weapons = attributes.weapons
-    this.language = attributes.language
+}
+
+  class CharacterStats extends GameObject{
+      constructor(attributes) {
+        super(attributes)
+        this.healthPoints = attributes.healthPoints
+      }
+      takeDamage() {
+          return (`${this.name} took damage.`)
+      }
   }
-  
-  Humanoid.prototype = Object.create(CharacterStats.prototype);
-  Humanoid.prototype.greet = function() {
-    return (`${this.name} offers a greeting in ${this.language}.`)
-  };
-  
-  function Hero(attributes) {
-    Humanoid.call(this, attributes)
-    this.side = attributes.side
+
+  class Humanoid extends CharacterStats{
+      constructor(attributes) {
+          super(attributes)
+          this.team = attributes.team
+          this.weapons = attributes.weapons
+          this.language = attributes.language
+      }
+      greet () {
+          return (`${this.name} offers a greeting in ${this.language}.`)
+      }
   }
-  
-  Hero.prototype = Object.create(Humanoid.prototype)
-  Hero.prototype.battleCry = function() {
-    return (`I am ${this.name}, and I fight for the ${this.side}!`)
+
+  class Hero extends Humanoid{
+      constructor(attributes){
+          super(attributes)
+          this.side = attributes.side
+      }
+      battleCry() {
+          return (`I am ${this.name}, and I fight for the ${this.side}!`)
+      }
   }
-  
-  function Villain(attributes) {
-    Humanoid.call(this, attributes)
-    this.side = attributes.side
+
+  class Villain extends Humanoid{
+      constructor(attributes){
+          super(attributes)
+          this.side = attributes.side
+      }
+      battleCry() {
+          return (`I am ${this.name}, and I fight for the ${this.side}!`)
+      }
   }
-  
-  Villain.prototype = Object.create(Humanoid.prototype)
-  Villain.prototype.battleCry = function() {
-    return (`I am ${this.name}, and I fight for the ${this.side}!`)
-  }
-  
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
